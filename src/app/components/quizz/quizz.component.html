@@ -1,3 +1,25 @@
-<div class="quiz-container">
-  <span>Olá mundo!</span>
+<div class="quizz-container">
+  <div class="quizz-logo">
+    <img src="logo.png" alt="Buzzfeed logo" />
+    <h3>{{ title }}</h3>
+  </div>
+
+  @if (!finished) {
+  <div class="quizz-questions">
+    <h3>{{ selectedQuestion.question }}</h3>
+  </div>
+  <div class="quizz-options">
+    @for (option of selectedQuestion.options; track option) {
+    <button (click)="playerChoice(option.alias)" class="btn-option">
+      {{ option.name }}
+    </button>
+    }
+  </div>
+
+  } @if (finished) {
+  <div class="quizz-results">
+    <h1>O seu resultado é:</h1>
+    <p>{{ selectedAnswer }}</p>
+  </div>
+  }
 </div>
